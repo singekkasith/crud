@@ -4,9 +4,8 @@ Project Name:
 > Online Novel
 
 ## Team Members
-*
-*1. Ekkasith S.
-*2. Anwar R.
+* Ekkasith S.
+* Anwar R.
 
 ## Project Description
 
