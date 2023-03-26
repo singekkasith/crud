@@ -2,11 +2,16 @@ import mongoose from "mongoose";
 
 const articleSchema = new mongoose.Schema(
   {
-    name: String,
-    address: String,
-    phone: String,
+    author: String,
+    title: String,
+    synopsis: String,
+    datePublish: String,
+    dateUpdate: String,
+    status: String,
+    note: String,
+    content: String,
   },
   { strict: false }
 );
 
-module.exports = mongoose.models.article || mongoose.model("article", articleSchema);
+module.exports = mongoose.models.chapters || mongoose.model("chapters", articleSchema);

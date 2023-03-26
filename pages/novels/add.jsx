@@ -6,7 +6,10 @@ import Container from 'react-bootstrap/Container';
 import NavBar from '@/components/navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Image from 'next/image'
+import Moment from 'moment';
 
 
 
@@ -16,7 +19,7 @@ export default function AddSupplierPage() {
     const [data, setData] = useState("");
 
     const saveRecord = async (data) => {
-        const response = await fetch('https://stock-final-6213934.vercel.app/api/suppliers/articles', {
+        const response = await fetch('/api/novels/chapters', {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -33,8 +36,8 @@ export default function AddSupplierPage() {
         if (result.error){
             alert("Error: " + result.error)
         } else {
-            alert("Supplier saved")
-            window.location.href = "https://stock-final-6213934.vercel.app/suppliers"
+            alert("Novel saved")
+            window.location.href = "/novels"
         }
         console.log(result)
         setData(JSON.stringify(data))
@@ -50,7 +53,7 @@ export default function AddSupplierPage() {
             width: '100vw'
         }}>
             <Image
-                src="/addBg.webp"
+                src="/library-browse.webp"
                 alt="Nice Background"
                 layout="fill"
                 objectFit='cover'
@@ -65,12 +68,12 @@ export default function AddSupplierPage() {
             width: '100vw',
             backgroundColor: "#191825"
         }} class="border-bottom  border-white">
-            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Create Supplier Record</b></h2><br />
+            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Create New Novel</b></h2><br />
         </div>
         
         <div style={{
             margin: 'auto',
-            height: '100vh',
+            height: '120vh',
             width: '100vw',
             backgroundColor: "rgba(0,0,0,0.7)",
         
@@ -85,23 +88,53 @@ export default function AddSupplierPage() {
                 <Form onSubmit={handleSubmit(saveRecord)}>
                     
                 <br />
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label htmlFor="name" style={{color: "#D27685"}} ><i><h5>Supplier</h5></i></Form.Label><br />
-                        <Form.Control id="name" {...register("name", { required: true })} placeholder="Supplier Name"/> 
-                        <Form.Text className="text-muted">
-                        </Form.Text>
+                    <Row className="mb-3">
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="author" style={{color: "#D27685"}} ><i><h5>Author</h5></i></Form.Label><br />
+                            <Form.Control id="author" {...register("author", { required: true })} placeholder="Author's Name"/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="title" style={{color: "#D27685"}} ><i><h5>Title</h5></i></Form.Label><br />
+                            <Form.Control id="title" {...register("title", { required: true })} placeholder="Novel Title"/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
+                    </Row>
+
+                    <Row className="mb-3">
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="datePublish" style={{color: "#D27685"}} ><i><h5>Date Publish</h5></i></Form.Label><br />
+                            <Form.Control id="datePublish" {...register("datePublish")} placeholder="Date Publish"  readOnly defaultValue={Moment().format('MMMM Do YYYY, h:mm:ss a')}/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="status" style={{color: "#D27685"}} ><i><h5>Status</h5></i></Form.Label><br />
+                            <Form.Select  id="status" {...register("status", { required: true })}>
+                                <option value="On-Going">On-Going</option>
+                                <option value="Complete">Complete</option>
+                                <option value="On-Paused">On-Paused</option>
+                                <option value="Discontinued">Discontinued</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Row>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label htmlFor="synopsis" style={{color: "#D27685"}} ><i><h5>Synopsis</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={3} textarea id="synopsis" {...register("synopsis")} placeholder="Synopsis"  />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label htmlFor="address" style={{color: "#D27685"}} ><i><h5>Address</h5></i></Form.Label>
-                        <Form.Control as="textarea" rows={3} textarea id="address" {...register("address")} placeholder="Address"  />
+                        <Form.Label htmlFor="note" style={{color: "#D27685"}} ><i><h5>Author's Note</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={3} textarea id="note" {...register("note")} placeholder="Author's Note"  />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label htmlFor="phone" style={{color: "#D27685"}} ><i><h5>Phone</h5></i></Form.Label><br />
-                        <Form.Control id="phone" {...register("phone", { required: true })} placeholder="Phone"/> 
-                        <Form.Text className="text-muted">
-                        </Form.Text>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label htmlFor="content" style={{color: "#D27685"}} ><i><h5>Content</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={10} textarea id="content" {...register("content")} placeholder="Write Your Story Here...."  />
                     </Form.Group>
                     
                     <div className="d-grid gap-2"> 
@@ -109,9 +142,11 @@ export default function AddSupplierPage() {
                         <p>{data}</p><br />
                     </div>
                 </Form>
+
             </div>
         </div>
         </>
     );       
 
+    
 }

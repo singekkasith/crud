@@ -10,6 +10,9 @@ import NavBar from '@/components/navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from 'next/image'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Supplier({ supplier }) {
@@ -24,7 +27,7 @@ export default function Supplier({ supplier }) {
   
 
   const updateSupplier = async (data) => {
-    const response = await fetch(`https://stock-final-6213934.vercel.app/api/suppliers/articles/${supplier._id}`, {
+    const response = await fetch(`/api/novels/chapters/${supplier._id}`, {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -41,8 +44,8 @@ export default function Supplier({ supplier }) {
     if (result.error){
         alert("Error: " + result.error)
     } else {
-        alert("Suppliers updated")
-        window.location.href = "https://stock-final-6213934.vercel.app/suppliers"
+        alert("Novel updated")
+        window.location.href = "http://localhost:3000/novels"
     }
     console.log(result)
     setData(JSON.stringify(data))
@@ -53,15 +56,15 @@ export default function Supplier({ supplier }) {
   console.log('supplier 2', supplier)
   if (!supplier) return (
     <div>
-      <p>Record not found</p>
-      <Link href="https://stock-final-6213934.vercel.app/suppliers">Back</Link>
+      <p>Novel not found</p>
+      <Link href="http://localhost:3000/novels">Back</Link>
       </div>
   ); 
 
   return (
     <>
       <Head>
-        <title>Update {supplier.name}</title>
+        <title>Update Novel: {supplier.title}</title>
       </Head>
 
       <div style={{
@@ -86,7 +89,7 @@ export default function Supplier({ supplier }) {
             width: '100vw',
             backgroundColor: "#191825"
         }} class="border-bottom  border-white">
-            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Update Supplier Record</b></h2><br />
+            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Update Novel: {supplier.title}</b></h2><br />
         </div>
         
         <div style={{
@@ -106,32 +109,62 @@ export default function Supplier({ supplier }) {
       
             <Form onSubmit={handleSubmit(updateSupplier)}>
                  <br />
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label htmlFor="name" style={{color: "#D27685"}} ><i><h5>Supplier</h5></i></Form.Label><br />
-              <Form.Control id="name" {...register("name", { required: true })} placeholder="Supplier Name" defaultValue={supplier.name}  /> 
-              <Form.Text className="text-muted">
-              </Form.Text>
-              </Form.Group>
+                    <Row className="mb-3">
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="author" style={{color: "#D27685"}} ><i><h5>Author</h5></i></Form.Label><br />
+                            <Form.Control id="author" {...register("author", { required: true })} placeholder="Author's Name" defaultValue={supplier.author}/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
 
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label htmlFor="address" style={{color: "#D27685"}} ><i><h5>Address</h5></i></Form.Label>
-              <Form.Control as="textarea" rows={3} textarea id="address" {...register("address")} placeholder="Address" defaultValue={supplier.address}  />
-              </Form.Group>
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="title" style={{color: "#D27685"}} ><i><h5>Title</h5></i></Form.Label><br />
+                            <Form.Control id="title" {...register("title", { required: true })} placeholder="Novel Title" defaultValue={supplier.title}/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
+                    </Row>
 
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label htmlFor="phone" style={{color: "#D27685"}} ><i><h5>Phone</h5></i></Form.Label><br />
-              <Form.Control id="phone" {...register("phone", { required: true })} placeholder="Phone" defaultValue={supplier.phone}/> 
-              <Form.Text className="text-muted">
-              </Form.Text>
-              </Form.Group>
+                    <Row className="mb-3">
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="dateUpdate" style={{color: "#D27685"}} ><i><h5>Latest Update</h5></i></Form.Label><br />
+                            <Form.Control id="dateUpdate" {...register("dateUpdate")} placeholder="Latest Update"  readOnly defaultValue={Moment().format('MMMM Do YYYY, h:mm:ss a')}/> 
+                            <Form.Text className="text-muted">
+                            </Form.Text>
+                        </Form.Group>
 
-              <div className="d-grid gap-2"> 
-                  <Button variant="warning" size="lg" type="submit"> S A V E</Button>
-                  <p>{data}</p><br />
-              </div>
+                        <Form.Group as={Col} className="mb-3" controlId="formBasicEmail">
+                            <Form.Label htmlFor="status" style={{color: "#D27685"}} ><i><h5>Status</h5></i></Form.Label><br />
+                            <Form.Select  id="status" {...register("status", { required: true })}>
+                                <option value="On-Going">On-Going</option>
+                                <option value="Complete">Complete</option>
+                                <option value="On-Paused">On-Paused</option>
+                                <option value="Discontinued">Discontinued</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Row>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label htmlFor="synopsis" style={{color: "#D27685"}} ><i><h5>Synopsis</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={3} textarea id="synopsis" {...register("synopsis")} placeholder="Synopsis" defaultValue={supplier.synopsis} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label htmlFor="note" style={{color: "#D27685"}} ><i><h5>Author's Note</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={3} textarea id="note" {...register("note")} placeholder="Author's Note" defaultValue={supplier.note} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label htmlFor="content" style={{color: "#D27685"}} ><i><h5>Content</h5></i></Form.Label>
+                        <Form.Control as="textarea" rows={10} textarea id="content" {...register("content")} placeholder="Write Your Story Here...." defaultValue={supplier.content} />
+                    </Form.Group>
+                    
+                    <div className="d-grid gap-2"> 
+                    <Button variant="warning" size="lg" type="submit"> S A V E</Button>
+                    <p>{data}</p><br />
+                     </div>
             </Form>
 
-            <Button variant="secondary" href="https://stock-final-6213934.vercel.app/suppliers" >Back </Button>
+            <Button variant="secondary" href="http://localhost:3000/novels" >Back </Button>
      
             </div>
       </div>
@@ -142,7 +175,7 @@ export default function Supplier({ supplier }) {
 // STEP 1: This function will be executed at the server before loading the page.
 export async function getServerSideProps({ params }) {
   console.debug('params', params)
-  const res = await fetch(`https://stock-final-6213934.vercel.app/api/suppliers/articles/${params.id}`)
+  const res = await fetch(`http://localhost:3000/api/novels/chapters/${params.id}`)
   const supplier = await res.json()
   console.debug('supplier 1', supplier)
   return { props: { supplier } }

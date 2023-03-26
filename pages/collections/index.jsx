@@ -55,7 +55,7 @@ export default function Home({ suppliers }) {
             width: '90vw',
             backgroundColor: "#4D4D4D"
         }}>
-            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Novels Archive</b></h2><br />
+            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Supplier Records Management</b></h2><br />
       </div>
 
       <div style={{
@@ -96,10 +96,8 @@ export default function Home({ suppliers }) {
             <tr>
               <th style={{width: '10rem', textAlign: "center"} }>Author</th>
               <th style={{width: '10rem', textAlign: "center"}}>Title</th>
-              <th style={{width: '10rem', textAlign: "center"}}>Date Publish</th>
-              <th style={{width: '10rem', textAlign: "center"}}>Last Update</th>
-              <th style={{width: '8rem', textAlign: "center"}}>Status</th>
               <th style={{width: '15rem', textAlign: "center"}}>Synopsis</th>
+              <th style={{width: '8rem', textAlign: "center"}}>Date Publish</th>
               <th style={{width: '20rem', textAlign: "center"}}>Content</th>
               <th style={{width: '8rem', textAlign: "center"}}>Update Record</th>
               <th style={{width: '8rem', textAlign: "center"}}>Delete Record</th>
@@ -112,23 +110,15 @@ export default function Home({ suppliers }) {
                 return ( 
                     <tr key={supplier._id}>
 
-                      <td style={{textAlign:'center'}}>{supplier.author}</td>
-
                       <td style={{textAlign:'center'}}>
                         <Link href={`/novels/${supplier._id}`}>
-                          {supplier.title}
+                          {supplier.name}
                         </Link>
                       </td>
 
-                      <td style={{textAlign:'center'}}>{supplier.datePublish}</td>
-                      <td style={{textAlign:'center'}}>{supplier.dateUpdate}</td>
+                      <td style={{textAlign:'center'}}>{supplier.address}</td>
 
-                      <td style={{textAlign:'center'}}>{supplier.status}</td>
-
-
-                      <td style={{textAlign:'center'}}>{supplier.synopsis}</td>
-
-                      <td style={{textAlign:'center'}}>{supplier.content}</td>
+                      <td style={{textAlign:'center'}}>{supplier.phone}</td>
 
                       <td>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -139,7 +129,7 @@ export default function Home({ suppliers }) {
                                 height="15"
                                 className="d-inline-block align-top"
                             />{' '}
-                            <Link href={`/novels/updates/${supplier._id}`}>Update</Link> 
+                            <Link href={`/novels/update/${supplier._id}`}>Update</Link> 
                       </td>
 
                       <td>

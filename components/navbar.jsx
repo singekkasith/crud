@@ -20,7 +20,8 @@ function NavBar() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/suppliers">Suppliers</Nav.Link>
+            <Nav.Link href="/collections">Novels</Nav.Link>
+            <Nav.Link href="/novels">Archive</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

@@ -15,18 +15,18 @@ export default function Supplier({ supplier }) {
   if (!supplier) return (
     <div>
       <p>Record not found</p>
-      <Link href="https://stock-final-6213934.vercel.app/suppliers">Back</Link>
+      <Link href="/novels">Back</Link>
       </div>
   );
 
   return (
     <>
       <Head>
-        <title>{supplier.name}</title>
+        <title>{supplier.title}</title>
       </Head>
 
       <Head>
-        <title>Update {supplier.name}</title>
+        <title>Author: {supplier.author}</title>
       </Head>
 
       <div style={{
@@ -51,7 +51,7 @@ export default function Supplier({ supplier }) {
             width: '100vw',
             backgroundColor: "#191825"
         }} class="border-bottom  border-white">
-            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>{supplier.name} Record</b></h2><br />
+            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>{supplier.title}</b></h2><br />
         </div>
         
         <div style={{
@@ -70,16 +70,12 @@ export default function Supplier({ supplier }) {
         
         }}>
             <br />
-            <h3 style={{color: "#66347F"}} >Address</h3>
-            <h6 style={{color: "#9E4784"}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.address}</h6>
-
-            <br />
-            <h3 style={{color: "#66347F"}} >Phone</h3>
-            <h6 style={{color: "#9E4784"}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.phone}</h6>
+            <h3 style={{color: "#66347F"}} >Content</h3>
+            <h6 style={{color: "#9E4784"}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.content}</h6>
 
           <div>
             <br />
-          <Button variant="secondary" href="https://stock-final-6213934.vercel.app/suppliers" >Back </Button>
+          <Button variant="secondary" href="/novels" >Back </Button>
           </div>
             
         </div>        
@@ -93,7 +89,7 @@ export default function Supplier({ supplier }) {
 // STEP 1: This function will be executed at the server before loading the page.
 export async function getServerSideProps({ params }) {
   console.debug('params', params)
-  const res = await fetch(`https://stock-final-6213934.vercel.app/api/suppliers/articles${params.id}`)
+  const res = await fetch(`http://localhost:3000/api/novels/chapters/${params.id}`)
   const supplier = await res.json()
   console.debug('blog 1', supplier)
   return { props: { supplier } }
