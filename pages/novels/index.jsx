@@ -12,8 +12,6 @@ import Container from 'react-bootstrap/Container';
 
 export default function Home({ suppliers }) {
 
-
-
   function deleteBlog(id) {
     fetch(`/api/novels/chapters/${id}`,
       {
@@ -101,8 +99,8 @@ export default function Home({ suppliers }) {
               <th style={{width: '8rem', textAlign: "center"}}>Status</th>
               <th style={{width: '15rem', textAlign: "center"}}>Synopsis</th>
               <th style={{width: '20rem', textAlign: "center"}}>Content</th>
-              <th style={{width: '8rem', textAlign: "center"}}>Update Record</th>
-              <th style={{width: '8rem', textAlign: "center"}}>Delete Record</th>
+              <th style={{width: '6rem', textAlign: "center"}}></th>
+            
             </tr>
           </thead>
 
@@ -131,20 +129,29 @@ export default function Home({ suppliers }) {
                       <td style={{textAlign:'center'}}>{supplier.content}</td>
 
                       <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <Image
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                            <Link href={`/novels/updates/${supplier._id}`}><Image
                                 alt=""
                                 src="/edit.ico"
-                                width="15"
-                                height="15"
+                                width="20"
+                                height="20"
+                                className="d-inline-block align-top"
+                            />{''}</Link> 
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <Image onClick={() => deleteBlog(supplier._id)}
+                                alt=""
+                                src="/bin.ico"
+                                width="20"
+                                height="20"
                                 className="d-inline-block align-top"
                             />{' '}
-                            <Link href={`/novels/updates/${supplier._id}`}>Update</Link> 
                       </td>
 
-                      <td>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <Button variant="danger"  onClick={() => deleteBlog(supplier._id)}>Delete</Button></td>
+
+
 
                     </tr>
                 )
