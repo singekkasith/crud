@@ -5,8 +5,9 @@ import Link from "next/link"
 import NavBar from '@/components/navbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Image from 'next/image'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card';
+import { Container, Image, Row, Col, Table } from 'react-bootstrap';
 
 
 // Step 2: This component is rendered from the server (Server-Side Rendering) SSR
@@ -22,11 +23,7 @@ export default function Supplier({ supplier }) {
   return (
     <>
       <Head>
-        <title>{supplier.title}</title>
-      </Head>
-
-      <Head>
-        <title>Author: {supplier.author}</title>
+        <title>{supplier.title} by {supplier.author}</title>
       </Head>
 
       <div style={{
@@ -45,42 +42,103 @@ export default function Supplier({ supplier }) {
 
         <NavBar />
 
+        
+
         <div style={{
             margin: 'auto',
             height: '12vh',
             width: '100vw',
             backgroundColor: "#191825"
-        }} class="border-bottom  border-white">
+        }} class="border-bottom ">
             <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>{supplier.title}</b></h2><br />
         </div>
-        
+
+      
         <div style={{
             margin: 'auto',
             height: '100vh',
             width: '100vw',
-            backgroundColor: "rgba(0,0,0,0.7)",
-        
+            backgroundColor: "rgba(0,0,0,0.7)"
         }}>
-            <div style={{
-            margin: 'auto',
-            height: '100vh',
-            width: '90vw',
-            
-            
-        
-        }}>
-            <br />
-            <h3 style={{color: "#66347F"}} >Content</h3>
-            <h6 style={{color: "#9E4784"}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.content}</h6>
 
-          <div>
+          <br />
+            <div style={{
+                margin: 'auto',
+                width: '90vw',
+                backgroundColor: "#191825",
+                borderRadius: "15px"
+            }} >
+              <br />
+                <Container>
+                  <Row>
+                    <Col>
+                        <Row>
+                            <Card bg ="dark" text = "white" style={{ width: '20rem'}} >
+                              <Card.Img variant="top" src="/library-browse.webp" 
+                                  />
+                              <Card.Body>
+                                <Card.Subtitle>
+                                  Status: {supplier.status}
+                                </Card.Subtitle>
+                              </Card.Body>
+                            </Card>
+                        </Row>
+                    </Col> 
+                    <Col sm={7} style={{color: "#FFFFFF"}}>
+                      
+                        
+                        <Row >
+                            <Col><b>Author :</b></Col>  
+                            <Col><b>Published Date :</b></Col>
+                            <Row>
+                                <Col>&nbsp;&nbsp;&nbsp;&nbsp;{supplier.author}</Col>
+                                <Col>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.datePublish}</Col>
+                            </Row>
+                            
+                        </Row>
+                        <Row>
+                            <b>Last Update :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {supplier.dateUpdate}
+                        </Row>
+                        <Row>
+                            <b>Synopsis :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {supplier.synopsis}
+                        </Row>
+
+                        <Row>
+                            <b>Note :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {supplier.note}
+                        </Row>
+                    </Col>
+                  </Row>
+              </Container>
+
+                
+              <br />
+            </div>
+
             <br />
-          <Button variant="secondary" href="/novels" >Back </Button>
-          </div>
+            <div style={{
+                margin: 'auto',
+                width: '90vw',
+                heigth: '100rem',
+                backgroundColor: "#191825",
+                borderRadius: "15px"
+            }} >
+              
+              <Container>
+              <h3 style={{color: "#66347F"}} ><b>Content</b></h3><br />
+              <h6 style={{color: "#9E4784"}} >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{supplier.content}</h6>
+              </Container>
+              <br />
+
+              <div className="d-grid gap-2">
+              <Button  size="lg" variant="secondary" href="/novels" >Back </Button> 
+              </div>
+              
+            </div>
+            
             
         </div>        
      
-      </div>
+
       
     </>
   )

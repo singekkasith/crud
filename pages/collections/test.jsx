@@ -7,9 +7,6 @@ import NovelCard from '../../components/NovelCard';
 import { Container, Image, Row, Col, Table } from 'react-bootstrap';
 import { Card, Button } from 'react-bootstrap';
 import * as React from 'react'
-import ListGroup from 'react-bootstrap/ListGroup';
-
-
 
 
 export default function Home({ suppliers }) {
@@ -34,7 +31,7 @@ export default function Home({ suppliers }) {
         items.push(
             suppliers.map(supplier => {
                 return ( 
-                    <NovelCard 
+                    <NovelCard
                         key={supplier._id}
                         author={supplier.author}
                         title={supplier.title}
@@ -49,80 +46,25 @@ export default function Home({ suppliers }) {
 })
 
   return (
-    <>
+    <Container>
         <Head>
           <title>Browse Novel</title>
         </Head>
 
-        <div style={{
-            zIndex: -10,
-            position: 'fixed',
-            height: '100vh',
-            width: '100vw'
-        }}>
-            <Image
-                src="/mainBg.webp"
-                alt="Nice Background"
-                layout="fill"
-                objectFit='cover'
-            ></Image>
-        </div>
-    
-      <NavBar />
-
-      <div style={{
-            margin: 'auto',
-            height: '12vh',
-            width: '100vw',
-            backgroundColor: "#4D4D4D"
-        }}>
-            <br /><h2 style={{color: "#B46060", textAlign: "center"}}><b>Novels Collections</b></h2><br />
-      </div>
-
-      <div style={{
-            margin: 'auto',
-            height: '0.5vh',
-            width: '100vw',
-            backgroundColor: "#B46060"
-        }} >
-      </div>
-
-      <div style={{
-            margin: 'auto',
-            height: '2vh',
-            width: '100vw',
-            backgroundColor: "#B867070"
-        }} >
+          <br /><Button variant="success" size="sl" style={{ marginLeft: '1rem' }} href="/novels/add"> +Add New Novel </Button><br />
           
-      </div>
-
-      
-      <div style={{
-            margin: 'auto',
-            height: '100rem',
-            
-            backgroundColor: "rgba(0,0,0,0.7)",
-        
-        }}>
-
-          <br /><Button variant="success" size="sl" style={{ marginLeft: '1rem' }} href="/novels/add"> Create a Novel </Button><br />
-    
           {
-            <Container >
-              <Row>
+            <Row>
                 <Col>
                     <Row>
                         {novelTitles}
                     </Row>
                 </Col> 
-              </Row>
-            </Container>
+            </Row>
           }
-          
 
-      
-      </div>
-    </>
+    
+    </Container>
     
   );
 }

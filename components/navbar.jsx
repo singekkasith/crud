@@ -16,7 +16,7 @@ function NavBar() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            The Records
+            Novels Portal
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>

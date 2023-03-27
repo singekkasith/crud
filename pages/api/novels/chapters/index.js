@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     console.log("req.method: ", req.method)
 
     if (req.method === 'GET') {
-        const docs = await Article.find().sort({name: 1})
+        const docs = await Article.find().sort({title: 1})
         res.status(200).json(docs)
     } else if (req.method === 'POST') {
         // console.log(typeof(req.body))
