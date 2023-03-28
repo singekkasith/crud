@@ -156,7 +156,7 @@ export default function Supplier({ supplier }) {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label htmlFor="note" style={{color: "#D27685"}} ><i><h5>Author&apos;s Note</h5></i></Form.Label>
+                        <Form.Label htmlFor="note" style={{color: "#D27685"}} ><i><h5>Author Note</h5></i></Form.Label>
                         <Form.Control as="textarea" rows={3} textarea id="note" {...register("note")} placeholder="Author's Note" defaultValue={supplier.note} />
                     </Form.Group>
 
