@@ -42,11 +42,14 @@ Online Novel Platform Project, that will allows any people to create their novel
 * Node
 
 ## Repository, Source Code & Links
+> Main Source code & Deployed Repository
+    - https://github.com/singekkasith/crud
+
 > Frontend Source code & Repository
     - https://github.com/singekkasith/crud-frontend
     
 > Backend Source code & Repository
-    - https://github.com/singekkasith/crud
+    - https://github.com/AnwarRasheed1211/back-end-crud
 
 > Youtube Demonstation link
     - 

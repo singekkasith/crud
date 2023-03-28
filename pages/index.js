@@ -41,16 +41,23 @@ export default function Home() {
             backgroundColor: "rgba(0,0,0,0.7)"
         }}>
 
+            <p style={{color: "#FFFFFF", textAlign: "center"}}>
+              by Ekkasith Singmaneechai 6213934&nbsp;<br />
+              Anwar Rasheed 6215106
+            </p>
+
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
             <span style={{color: "#FFFFFF", textAlign: "center"}}><h1>CRUD Novel Web Application</h1>
             <br />
             <br />
-            <Button variant="success" size="sl" style={{ marginLeft: '58rem' }} href={`/collections`}> Go Browse Novel </Button>
+            <Button variant="success" size="sl" style={{ marginLeft: '50rem' }} href={`/collections`}> Go Browse Novel </Button>
             </span>
-            <p>
-              by Ekkasith Singmaneechai 6213934&nbsp;<br />
-              Anwar Rasheed 6215106
-            </p>
+            
           </div>
         </div>
       
