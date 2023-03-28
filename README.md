@@ -1,7 +1,7 @@
 # CRUD Project
 
 Project Name:
-> Online Novel Reading
+> Novel Reading App
 
 ## Team Members
 * Ekkasith S. 6213934
@@ -52,7 +52,7 @@ Online Novel Platform Project, that will allows any people to create their novel
     - https://github.com/AnwarRasheed1211/back-end-crud
 
 > Youtube Demonstation link
-    - 
+    - https://youtu.be/B_-PN3gFJZY
 
 > The Web App link
     - https://crud-novel.vercel.app/
