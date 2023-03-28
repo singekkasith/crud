@@ -3,10 +3,10 @@ import { Card, Button } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function NovelCard(props) {
-    const { title, datePublish, synopsis, author,  handleClick } = props;
+    const { title, datePublish, synopsis, author, imgUrl, handleClick } = props;
     return (
         <Card bg ="dark" text = "white" style={{ width: '16.5rem' }}>
-            <Card.Img variant="top" src="/addBg.webp"
+            <Card.Img variant="top" src={imgUrl}
                 alt="Nice Background" /> 
             <Card.Body>
                 <Card.Title>{title}  </Card.Title>

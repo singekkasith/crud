@@ -37,7 +37,7 @@ export default function AddSupplierPage() {
             alert("Error: " + result.error)
         } else {
             alert("Novel saved")
-            window.location.href = "/novels"
+            window.location.href = "/collections"
         }
         console.log(result)
         setData(JSON.stringify(data))

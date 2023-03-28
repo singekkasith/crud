@@ -16,18 +16,7 @@ export default function Home({ suppliers }) {
 
   let [novelTitles, setNovelTitles] = React.useState([])
 
-  function deleteBlog(id) {
-    fetch(`/api/novels/chapters/${id}`,
-      {
-        method: 'DELETE'
-      })
-      .then(res => res.json())
-      .then(data => {
-        // alert("Deleting " + id)
-        window.location.reload(false);
-      })
-
-  }
+  
 
   React.useEffect(() => {
     let items = []
@@ -40,6 +29,7 @@ export default function Home({ suppliers }) {
                         title={supplier.title}
                         synopsis={supplier.synopsis}
                         datePublish={supplier.dateSynopsis}
+                        imgUrl={supplier.imgUrl}
                         handleClick={`/collections/${supplier._id}`}
                         />
                         )
@@ -105,7 +95,7 @@ export default function Home({ suppliers }) {
         
         }}>
 
-          <br /><Button variant="success" size="sl" style={{ marginLeft: '1rem' }} href="/novels/add"> Create a Novel </Button><br />
+          <br /><Button variant="success" size="sl" style={{ marginLeft: '1rem' }} href="/collections/add"> Create a Novel </Button><br />
     
           {
             <Container >
@@ -128,7 +118,7 @@ export default function Home({ suppliers }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/novels/chapters`)
+  const res = await fetch(`/api/novels/chapters`)
   const suppliers = await res.json()
   
   return { props: { suppliers } }

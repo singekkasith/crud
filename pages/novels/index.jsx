@@ -99,6 +99,7 @@ export default function Home({ suppliers }) {
               <th style={{width: '8rem', textAlign: "center"}}>Status</th>
               <th style={{width: '15rem', textAlign: "center"}}>Synopsis</th>
               <th style={{width: '20rem', textAlign: "center"}}>Content</th>
+              <th style={{width: '20rem', textAlign: "center"}}>ImageUrl</th>
               <th style={{width: '6rem', textAlign: "center"}}></th>
             
             </tr>
@@ -128,8 +129,10 @@ export default function Home({ suppliers }) {
 
                       <td style={{textAlign:'center'}}>{supplier.content}</td>
 
+                      <td style={{textAlign:'center'}}>{supplier.imgUrl}</td>
+
                       <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;
                             
                             <Link href={`/novels/updates/${supplier._id}`}><Image
                                 alt=""
@@ -168,8 +171,9 @@ export default function Home({ suppliers }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/novels/chapters`)
+  const res = await fetch(`/api/novels/chapters`)
   const suppliers = await res.json()
   
   return { props: { suppliers } }
 }
+

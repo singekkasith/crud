@@ -45,7 +45,7 @@ export default function Supplier({ supplier }) {
         alert("Error: " + result.error)
     } else {
         alert("Novel updated")
-        window.location.href = "/novels"
+        window.location.href = "/collections"
     }
     console.log(result)
     setData(JSON.stringify(data))
@@ -57,7 +57,7 @@ export default function Supplier({ supplier }) {
   if (!supplier) return (
     <div>
       <p>Novel not found</p>
-      <Link href="/novels">Back</Link>
+      <Link href="collections">Back</Link>
       </div>
   ); 
 
@@ -171,7 +171,7 @@ export default function Supplier({ supplier }) {
                      </div>
             </Form>
 
-            <Button variant="secondary" href="/novels" >Back </Button>
+            <Button variant="secondary" href="/collections" >Back </Button>
      
             </div>
       </div>
