@@ -171,7 +171,7 @@ export default function Home({ suppliers }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`/api/novels/chapters`)
+  const res = await fetch(`APIURL/api/novels/chapters`)
   const suppliers = await res.json()
   
   return { props: { suppliers } }
