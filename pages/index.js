@@ -19,13 +19,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-        <div className={styles.description} style={{color: "#66347F"}} >
-          <p>
-            by Ekkasith Singmaneechai 6213934&nbsp;<br />
-            Anwar Rasheed 6215106
-          </p>
-        </div>
 
         <div>
       <div style={{
@@ -49,11 +42,15 @@ export default function Home() {
         }}>
 
           <br />
-            <span style={{color: "#FFFFFF", textAlign: "center"}}><h1>Online Novel Web Application</h1>
+            <span style={{color: "#FFFFFF", textAlign: "center"}}><h1>CRUD Novel Web Application</h1>
             <br />
             <br />
-            <Button variant="Success" size="sl" style={{ marginLeft: '58rem' }} href={`/collections`}> Go Browse Novel </Button>
+            <Button variant="success" size="sl" style={{ marginLeft: '58rem' }} href={`/collections`}> Go Browse Novel </Button>
             </span>
+            <p>
+              by Ekkasith Singmaneechai 6213934&nbsp;<br />
+              Anwar Rasheed 6215106
+            </p>
           </div>
         </div>
       

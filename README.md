@@ -52,4 +52,4 @@ Online Novel Platform Project, that will allows any people to create their novel
     - 
 
 > The Web App link
-    -
+    - https://crud-novel.vercel.app/
