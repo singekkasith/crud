@@ -22,9 +22,39 @@ export default function Home() {
       }}>
         <div className={styles.description} style={{color: "#66347F"}} >
           <p>
-            Ekkasith Singmaneechai 6213934&nbsp;<br />
+            by Ekkasith Singmaneechai 6213934&nbsp;<br />
             Anwar Rasheed 6215106
           </p>
+        </div>
+
+        <div>
+      <div style={{
+            zIndex: -10,
+            position: 'fixed',
+            height: '100vh',
+            width: '100vw'
+        }}>
+            <Image
+                src="/library-book-bookshelf-read.jpg"
+                alt="Nice Background"
+                layout="fill"
+                objectFit='cover'
+            ></Image>
+        </div>
+        <div style={{
+            margin: 'auto',
+            height: '100vh',
+            width: '90vw',
+            backgroundColor: "rgba(0,0,0,0.7)"
+        }}>
+
+          <br />
+            <span style={{color: "#FFFFFF", textAlign: "center"}}><h1>Online Novel Web Application</h1>
+            <br />
+            <br />
+            <Button variant="Success" size="sl" style={{ marginLeft: '58rem' }} href={`/collections`}> Go Browse Novel </Button>
+            </span>
+          </div>
         </div>
       </main>
     </>
