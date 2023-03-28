@@ -30,7 +30,7 @@ export default function Home({ suppliers }) {
                         synopsis={supplier.synopsis}
                         datePublish={supplier.dateSynopsis}
                         imgUrl={supplier.imgUrl}
-                        handleClick={`/collections/${supplier._id}`}
+                        handleClick={`${APIURL}/collections/${supplier._id}`}
                         />
                         )
                 })
@@ -118,7 +118,7 @@ export default function Home({ suppliers }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`APIURL/api/novels/chapters`)
+  const res = await fetch(`${APIURL}/api/novels/chapters`)
   const suppliers = await res.json()
   
   return { props: { suppliers } }

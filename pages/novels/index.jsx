@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 
-
+const APIURL = process.env.APIURL
 
 export default function Home({ suppliers }) {
 
@@ -171,7 +171,7 @@ export default function Home({ suppliers }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`APIURL/api/novels/chapters`)
+  const res = await fetch(`${APIURL}/api/novels/chapters`)
   const suppliers = await res.json()
   
   return { props: { suppliers } }
