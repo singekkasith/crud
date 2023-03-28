@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from '@/components/navbar.jsx';
 import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +19,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main} style={{
-          backgroundColor: "#191825"
-      }}>
+      
         <div className={styles.description} style={{color: "#66347F"}} >
           <p>
             by Ekkasith Singmaneechai 6213934&nbsp;<br />
@@ -57,7 +56,7 @@ export default function Home() {
             </span>
           </div>
         </div>
-      </main>
+      
     </>
   )
 }
