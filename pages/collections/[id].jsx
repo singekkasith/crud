@@ -196,7 +196,7 @@ export default function Supplier({ supplier }) {
 // STEP 1: This function will be executed at the server before loading the page.
 export async function getServerSideProps({ params }) {
   console.debug('params', params)
-  const res = await fetch(`/api/novels/chapters/${params.id}`)
+  const res = await fetch(`https://crud-novel.vercel.app/api/novels/chapters/${params.id}`)
   const supplier = await res.json()
   console.debug('blog 1', supplier)
   return { props: { supplier } }
