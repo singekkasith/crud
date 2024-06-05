@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ip": ">=2.0.1",
     "bootstrap": "^5.2.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
